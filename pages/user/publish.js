@@ -147,7 +147,7 @@ const Publish = () => {
 
       <Container maxWidth="md"className={classes.boxcontainer}>
         <Box textAlign="right">
-          <Button>
+          <Button variant="contained" color="primary">
             Publicar Anúncio
           </Button>
         </Box>
