@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useState } from "react";
 import {
   Box,
   TextField,
@@ -15,13 +15,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DeleteForever } from "@material-ui/icons";
 
 import TemplateDefault from "../../src/templates/Default";
-
-const { getRootProps, getInputProps } = useDropzone({
-  accept: "image/*",
-  onDrop: (acceptedFiles) => {
-    console.log(acceptedFiles);
-  },
-});
 
 const useStyles = makeStyles((theme) => ({
   mask: {},
@@ -85,13 +78,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Publish = () => {
-  const classes = useStyles();
+  const classes = useStyles()
+  const [files, setFiles] = React.useState([])
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
-      console.log(acceptedFiles);
-    },
-  });
+      const newFiles = acceptedFiles.map((file) => {
+        return Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      })
+
+      setFiles([
+        ...files, ...newFiles,
+      ])
+    }
+  })
+
+  const handleRemoveFile = fileName => {
+    const newFileState = files.filter(file => file.name !== fileName)
+    setFiles(newFileState)
+  }
+
   return (
     <TemplateDefault>
       <Container maxWidth="sm" className={classes.container}>
@@ -169,28 +178,34 @@ const Publish = () => {
           <Box className={classes.thumbsContainer}>
             <Box className={classes.dropzone} {...getRootProps()}>
               <input {...getInputProps()} />
+
               <Typography variant="body2" color="textPrimary">
                 Clique para adicionar imagens ou arraste-as aqui.
               </Typography>
             </Box>
 
-            <Box
-              className={classes.thumb}
-              style={{
-                backgroundImage: "url(https://source.unsplash.com/random)",
-              }}
-            >
-              <Box className={classes.mainImage}>
-                <Typography variant="body2" color="secondary">
-                  Principal
-                </Typography>
+            {files.map((file) => (
+              <Box
+                className={classes.thumb}
+                style={{
+                  backgroundImage: `url(${file.preview})`,
+                }}
+              >
+                <Box className={classes.mainImage}>
+                  <Typography variant="body2" color="secondary">
+                    Principal
+                  </Typography>
+                </Box>
+                <Box className={classes.mask}>
+                  <IconButton
+                    color="secondary"
+                    onClick={() => handleRemoveFile(file.name)}
+                  >
+                    <DeleteForever fontSize="large" />
+                  </IconButton>
+                </Box>
               </Box>
-              <Box className={classes.mask}>
-                <IconButton color="secondary">
-                  <DeleteForever fontSize="large" />
-                </IconButton>
-              </Box>
-            </Box>
+            ))}
           </Box>
         </Box>
       </Container>
