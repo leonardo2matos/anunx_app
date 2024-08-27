@@ -1,25 +1,97 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TemplateDefault from "../../src/templates/Default";
-import { Box, TextField, Container, Typography, Select, Button } from "@material-ui/core";
 
+import {
+  Box,
+  TextField,
+  Container,
+  Typography,
+  Select,
+  Button,
+  IconButton,
+} from "@material-ui/core";
+
+import { useDropzone } from "react-dropzone";
+import { makeStyles } from "@material-ui/core/styles";
+import { DeleteForever } from "@material-ui/icons";
+
+import TemplateDefault from "../../src/templates/Default";
+
+const { getRootProps, getInputProps } = useDropzone({
+  accept: "image/*",
+  onDrop: (acceptedFiles) => {
+    console.log(acceptedFiles);
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
+  mask: {},
+  mainImage: {},
   container: {
     padding: theme.spacing(8, 0, 6),
   },
-  boxcontainer:{ 
+  boxcontainer: {
     padding: theme.spacing(3),
-
   },
   box: {
     backgroundColor: theme.palette.background.white,
     padding: theme.spacing(3),
   },
+  thumbsContainer: {
+    display: "flex",
+    marginTop: 15,
+  },
+  dropzone: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: 10,
+    width: 200,
+    height: 150,
+    margin: "0 15px 15px 0",
+    backgroundColor: theme.palette.background.default,
+    border: "2px dashed black",
+  },
+  thumb: {
+    width: 200,
+    height: 150,
+    position: "relative",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+
+    "& $mainImage": {
+      backgroundColor: "blue",
+      padding: "6px 10px",
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+    },
+
+    "&:hover $mask": {
+      display: "flex",
+    },
+
+    "& $mask": {
+      display: "flex",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      width: "100%",
+      height: "100%",
+    },
+  },
 }));
 
 const Publish = () => {
   const classes = useStyles();
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      console.log(acceptedFiles);
+    },
+  });
   return (
     <TemplateDefault>
       <Container maxWidth="sm" className={classes.container}>
@@ -63,9 +135,9 @@ const Publish = () => {
             fullWidth
             onChange={() => {}}
             inputProps={{
-              name: 'age',
-            }}          
-          > 
+              name: "age",
+            }}
+          >
             <option value="">Escolha uma categoria</option>
             <option value={1}>Bebê e Criança</option>
             <option value={2}>Agricultura</option>
@@ -83,69 +155,88 @@ const Publish = () => {
             <option value={3}>Emprego</option>
             <option value={3}>Outros</option>
           </Select>
-
         </Box>
-      
       </Container>
 
-      <Container maxWidth="md"className={classes.boxcontainer}>
+      <Container maxWidth="md" className={classes.boxcontainer}>
         <Box className={classes.box}>
           <Typography variant="h6" component="h6" color="textPrimary">
-           Imagens
+            Imagens
           </Typography>
           <Typography variant="body2" component="div" color="textPrimary">
-           A primeira imagem é a foto principal do seu anúncio.
+            A primeira imagem é a foto principal do seu anúncio.
           </Typography>
-        </Box>    
+          <Box className={classes.thumbsContainer}>
+            <Box className={classes.dropzone} {...getRootProps()}>
+              <input {...getInputProps()} />
+              <Typography variant="body2" color="textPrimary">
+                Clique para adicionar imagens ou arraste-as aqui.
+              </Typography>
+            </Box>
+
+            <Box
+              className={classes.thumb}
+              style={{
+                backgroundImage: "url(https://source.unsplash.com/random)",
+              }}
+            >
+              <Box className={classes.mainImage}>
+                <Typography variant="body2" color="secondary">
+                  Principal
+                </Typography>
+              </Box>
+              <Box className={classes.mask}>
+                <IconButton color="secondary">
+                  <DeleteForever fontSize="large" />
+                </IconButton>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Container>
-      <Container maxWidth="md"className={classes.boxcontainer}>
+      <Container maxWidth="md" className={classes.boxcontainer}>
         <Box className={classes.box}>
           <Typography variant="h6" component="h6" color="textPrimary">
-           Descrição
+            Descrição
           </Typography>
           <Typography variant="body2" component="div" color="textPrimary">
-           Escreva uma boa descrição para o seu anúncio.
+            Escreva uma boa descrição para o seu anúncio.
           </Typography>
           <TextField
             multiline
             mimrows={6}
             maxRows={6}
             variant="outlined"
-            fullWidth    
+            fullWidth
           />
-        </Box>    
+        </Box>
       </Container>
-      <Container maxWidth="md"className={classes.boxcontainer}>
+      <Container maxWidth="md" className={classes.boxcontainer}>
         <Box className={classes.box}>
-          <Typography variant="h6" component="h6" color="textPrimary"gutterBottom>
-           Dados de Contato
+          <Typography
+            variant="h6"
+            component="h6"
+            color="textPrimary"
+            gutterBottom
+          >
+            Dados de Contato
           </Typography>
-          <TextField
-            label="Nome"
-            size="small"
-            variant="outlined"
-            fullWidth    
-          />
-          <br/>
-          <br/>
-          <TextField
-            label="E-mail"
-            size="small"
-            variant="outlined"
-            fullWidth    
-          />
-          <br/>
-          <br/>
+          <TextField label="Nome" size="small" variant="outlined" fullWidth />
+          <br />
+          <br />
+          <TextField label="E-mail" size="small" variant="outlined" fullWidth />
+          <br />
+          <br />
           <TextField
             label="Telefone"
             size="small"
             variant="outlined"
-            fullWidth    
+            fullWidth
           />
-        </Box>    
+        </Box>
       </Container>
 
-      <Container maxWidth="md"className={classes.boxcontainer}>
+      <Container maxWidth="md" className={classes.boxcontainer}>
         <Box textAlign="right">
           <Button variant="contained" color="primary">
             Publicar Anúncio
