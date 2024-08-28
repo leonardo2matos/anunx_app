@@ -7,8 +7,6 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
-  Button,
   Typography,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/search";
@@ -52,7 +50,7 @@ const Home = () => {
         </Paper>
       </Container>
 
-      <Container maxWidth="md" className={classes.cardGrid}>
+      <Container maxWidth="lg" className={classes.cardGrid}>
         <Typography
           component="h2"
           variant="h4"
@@ -76,14 +74,6 @@ const Home = () => {
                 </Typography>
                 <Typography>$ 10,00</Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Editar
-                </Button>
-                <Button size="small" color="primary">
-                  Remover
-                </Button>
-              </CardActions>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>

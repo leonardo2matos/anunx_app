@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+
 import {
   Box,
   TextField,
@@ -82,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Publish = () => {
-  const classes = useStyles()
-  const [files, setFiles] = React.useState([])
+  const classes = useStyles();
+  const [files, setFiles] = React.useState([]);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
@@ -91,19 +91,17 @@ const Publish = () => {
       const newFiles = acceptedFiles.map((file) => {
         return Object.assign(file, {
           preview: URL.createObjectURL(file),
-        })
-      })
+        });
+      });
 
-      setFiles([
-        ...files, ...newFiles,
-      ])
-    }
-  })
+      setFiles([...files, ...newFiles]);
+    },
+  });
 
-  const handleRemoveFile = fileName => {
-    const newFileState = files.filter(file => file.name !== fileName)
-    setFiles(newFileState)
-  }
+  const handleRemoveFile = (fileName) => {
+    const newFileState = files.filter((file) => file.name !== fileName);
+    setFiles(newFileState);
+  };
 
   return (
     <TemplateDefault>
@@ -241,7 +239,9 @@ const Publish = () => {
             <InputLabel>Valor</InputLabel>
             <OutlinedInput
               onChange={() => {}}
-              startAdornment={<InputAdornment position="start">R$</InputAdornment>}
+              startAdornment={
+                <InputAdornment position="start">R$</InputAdornment>
+              }
               labelWidth={40}
             />
           </FormControl>

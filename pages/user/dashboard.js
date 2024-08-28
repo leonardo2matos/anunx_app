@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, CardMedia, CardActions, CardContent, Container, Card, Typography, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import TemplateDefault from "../../src/templates/Default";
+import React from "react"
+import { Button, CardMedia, CardActions, CardContent, Container, Card, Typography, Grid } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import TemplateDefault from "../../src/templates/Default"
 
 const useStyles = makeStyles((theme) => ({
   container: { padding: theme.spacing(8, 0, 6) },
