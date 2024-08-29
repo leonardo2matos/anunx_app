@@ -1,10 +1,11 @@
 import React from "react"
-import { Button, CardMedia, CardActions, CardContent, Container, Card, Typography, Grid } from "@material-ui/core"
+import { Button, CardMedia, CardActions, CardContent, Container,Typography, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import TemplateDefault from "../../src/templates/Default"
+import Card from "../../src/components/Card"
 
 const useStyles = makeStyles((theme) => ({
-  container: { padding: theme.spacing(8, 0, 6) },
+  
   cardMedia: { paddingTop: "56%" },
   buttonAdd: { margin: "30px auto", display: "block" },
 }));
@@ -14,7 +15,7 @@ export default function Home() {
 
   return (
     <TemplateDefault>
-      <Container maxWidth="sm" className={classes.container}>
+      <Container maxWidth="sm" >
         <Typography variant="h2" component="h1" align="center">
           Meus Anúncios
         </Typography>
@@ -25,9 +26,11 @@ export default function Home() {
       <Container maxWidth="md">
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
-              <CardMedia className={classes.cardMedia} image={"https://source.unsplash.com/random"} title="Título da imagem" />
-              <CardContent>
+            <Card
+            image={"https://source.unsplash.com/random"}
+            title="Produto x"
+            subtitle="$ 10,00"
+            />
                 <Typography variant="h5" component="h2">
                   Product x
                 </Typography>

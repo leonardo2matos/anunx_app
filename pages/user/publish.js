@@ -23,11 +23,8 @@ import TemplateDefault from "../../src/templates/Default";
 const useStyles = makeStyles((theme) => ({
   mask: {},
   mainImage: {},
-  container: {
-    padding: theme.spacing(8, 0, 6),
-  },
-  boxcontainer: {
-    padding: theme.spacing(3),
+  boxContainer: {
+    paddingBottom: theme.spacing(3),
   },
   box: {
     backgroundColor: theme.palette.background.white,
@@ -35,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thumbsContainer: {
     display: "flex",
+    flexWrap: "wrap",
     marginTop: 15,
   },
   dropzone: {
