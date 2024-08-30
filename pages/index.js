@@ -3,15 +3,14 @@ import {
   IconButton,
   InputBase,
   Paper,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
   Typography,
+  Grid,
+  
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/search";
 import TemplateDefault from "../src/templates/Default";
 import { makeStyles } from "@material-ui/core/styles";
+import  Card from "../src/components/Card";
 
 const useStyles = makeStyles((theme) => ({
   searchBox: {
@@ -20,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2),
     marginTop: 20,
   },
-  cardMedia: {
-    paddingTop: "56%",
-  },
+  cardGrid: {
+    marginTop:50,
+  }
+
 }));
 
 const Home = () => {
@@ -59,49 +59,28 @@ const Home = () => {
         <br/>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
-              <CardMedia
-                className={classes.cardMedia}
-                image={"https://source.unsplash.com/random"}
-                title="Título da imagem"
-              />
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  Product x
-                </Typography>
-                <Typography>$ 10,00</Typography>
-              </CardContent>
-            </Card>
+          <Card
+            image={"https://source.unsplash.com/random"}
+            title="Produto x"
+            subtitle="$ 10,00"
+           
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
-              <CardMedia
-                className={classes.cardMedia}
-                image={"https://source.unsplash.com/random"}
-                title="Título da imagem"
-              />
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  Product x
-                </Typography>
-                <Typography>$ 10,00</Typography>
-              </CardContent>
-            </Card>
+          <Card
+            image={"https://source.unsplash.com/random"}
+            title="Produto x"
+            subtitle="$ 10,00"
+            
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card>
-              <CardMedia
-                className={classes.cardMedia}
-                image={"https://source.unsplash.com/random"}
-                title="Título da imagem"
-              />
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  Product x
-                </Typography>
-                <Typography>$ 10,00</Typography>
-              </CardContent>
-            </Card>
+          <Card
+            image={"https://source.unsplash.com/random"}
+            title="Produto x"
+            subtitle="$ 10,00"
+            
+            />
           </Grid>
         </Grid>
       </Container>

@@ -103,7 +103,7 @@ const Publish = () => {
 
   return (
     <TemplateDefault>
-      <Container maxWidth="sm" className={classes.container}>
+      <Container maxWidth="sm" >
         <Typography
           variant="h2"
           component="h1"

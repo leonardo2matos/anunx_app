@@ -4,20 +4,17 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  Button,
+  makeStyles,
 } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   cardMedia: {
     paddingTop: "56%",
   },
-  buttonAdd: {
-    margin: "30px auto",
-    display: "block",
-  }
 }));
 
 const Card = ({ image, title, subtitle, actions }) => {
+  const classes = useStyles();
   return (
     <CardMUI>
       <CardMedia className={classes.cardMedia} image={image} title={title} />
@@ -32,4 +29,4 @@ const Card = ({ image, title, subtitle, actions }) => {
   );
 };
 
-export default Card
+export default Card;
