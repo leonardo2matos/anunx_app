@@ -36,12 +36,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Product = () => {
   const classes = useStyles();
+
   return (
     <TemplateDefault>
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={8}>
             <Box className={classes.box}>
+              <Carousel
+                autoPlay={false}
+                animation='slide'
+                navButtonsAlwaysVisible
+                navButtonsProps={{
+                  style: {
+                    color: 'white',
+                  }
+                }}
+              />
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
