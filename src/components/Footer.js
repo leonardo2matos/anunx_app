@@ -11,7 +11,11 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
+  link: {
+    textDecoration: 'none',
+  },
 }));
+
 const Footer = () => {
   const classes = useStyles();
 
@@ -21,7 +25,7 @@ const Footer = () => {
         <Grid item xs={6} sm={3}>
           <Box textAlign="center">
             <Link href="#" passHref>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="textSecondary" className={classes.link}>
                 Ajuda e Contato
               </Typography>
             </Link>
@@ -30,7 +34,7 @@ const Footer = () => {
         <Grid item xs={6} sm={3}>
           <Box textAlign="center">
             <Link href="#" passHref>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="textSecondary" className={classes.link}>
                 Dicas de segurança
               </Typography>
             </Link>
@@ -39,7 +43,7 @@ const Footer = () => {
         <Grid item xs={6} sm={3}>
           <Box textAlign="center">
             <Link href="#" passHref>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="textSecondary" className={classes.link}>
                 Anunciar e Vender
               </Typography>
             </Link>
@@ -48,7 +52,7 @@ const Footer = () => {
         <Grid item xs={6} sm={3}>
           <Box textAlign="center">
             <Link href="#" passHref>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="textSecondary" className={classes.link}>
                 Plano profissional
               </Typography>
             </Link>
